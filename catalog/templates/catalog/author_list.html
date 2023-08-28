@@ -1,0 +1,40 @@
+{% extends "catalog/base_generic.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	{% block content %}
+	
+	<h2>author_list</h2>
+	{% if author_list %}
+	
+	<table> 
+	<tr>
+		<td>Author</td>
+		{% if perms.catalog.change_author or perms.catalog.delete_author %}
+		<td>Action</td>
+		{% endif %}
+	</tr>	
+	{% for author in author_list %}
+	<tr>
+		<td><a href="{{ author.get_absolute_url }}">{{ author.first_name}}</a></td>
+		{% if perms.catalog.change_author %}
+		<td><button class="btn btn-info"><a href="{% url 'author-update' author.id %}">Update</a></button></td>
+		{% endif %}
+		{% if perms.catalog.delete_author %}
+		<td><button class="btn btn-info"><a href="{% url 'author-delete' author.id %}">Delete</a></button></td>
+		{% endif %}
+	</tr>
+
+	 		
+	{% endfor %}
+	</table>
+	{% endif %}
+	
+	{% endblock %}
+
+
+</body>
+</html>

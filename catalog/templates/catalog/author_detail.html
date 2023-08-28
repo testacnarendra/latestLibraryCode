@@ -1,0 +1,28 @@
+{% extends 'catalog/base_generic.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	{% block content %}
+	{% if author %}
+	Author Detail page
+	<p>Name:{{ author.first_name }} {{ author.last_name }} </p>
+	<p>Date_of_birth: {{author.date_of_birth}}</p>
+	
+	<hr/>
+	<p>Total Books written  by {{ author.first_name }} </p>
+	<ul>
+	{% for book in author.book_set.all %}
+	<li>{{ book.title }}</li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+
+	{% endblock %}
+	
+	
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends "catalog/base_generic.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block title %}
+	<title>Local Library index page </title>
+	{% endblock %}
+</head>
+<body>	
+	{% block content %}
+	<!-- default content text (typically empty) -->
+	<h2> Library Home</h2>
+	<p>
+		<em>Welcome to Library Management System</em> 
+	</p>	
+	<p>The library has the following record counts:</p>
+	<ul>
+		<li><strong>Total Books:</strong> {{ num_books }}</li>
+		<li><strong>Total instances:</strong> {{ num_instances }}</li>
+		<li><strong>Total Instances_available:</strong> {{ num_instances_available }}</li>
+		<li><strong>Total Authors:</strong> {{ num_authors }}</li>
+	</ul>
+
+	<p>You have visited this page {{ num_visits }} time {{ num_visits|pluralize}}</p>
+	
+	{% endblock %}
+
+</body>
+</html>
