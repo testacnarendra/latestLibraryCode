@@ -30,6 +30,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['web-production-3640.up.railway.app', '127.0.0.1']
 
 # Application definition
 
@@ -81,7 +82,12 @@ WSGI_APPLICATION = 'locallibrary.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME':'locallibrary_db',
+        'USER': 'root',
+        'PASSWORD':'root',
+        'HOST': 'localhost',
+        'PORT':3306
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -120,6 +126,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+# CSRF_TRUSTED_ORIGINS = ['https://web-production-3640.up.railway.app']
+# During development/for this tutorial you can instead set just the base URL
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -138,3 +147,8 @@ LOGIN_REDIRECT_URL= '/catalog/index'
 
 # Optionally, you can reduce the size of the static files when they are served
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
+
+ 
